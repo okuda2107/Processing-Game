@@ -1,0 +1,3 @@
+class ObjectComponent extends Component {
+
+}
