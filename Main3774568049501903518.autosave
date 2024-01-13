@@ -1,9 +1,9 @@
 Game game;
 
 void setup() {
-    size(400, 400, P3D);
-    game = new Game(400, 400);
+    game = new Game();
     game.initialize();
+    size(400, 400, P3D);
 }
 
 void draw() {

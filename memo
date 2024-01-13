@@ -1,1 +1,19 @@
 Actor周りから作っていこう -> GameクラスはActor配列を回して処理する機構を整えてそれが動くことをテストしてから3DObjを描画していきたい
+
+通信，コリジョンを実装
+
+deadにしたとき，actorのデストラクタがきちんと動くか
+-> javaにはデストラクタが無いので，別の処理が必要->close処理をつくるか？
+
+Actor.pde, Component.pde classの前にabstractを付けやなあかん
+
+https://qiita.com/umi_mori/items/58ade92d9fbb9f9ed696
+https://dekfractal.com/1371.html
+
+Actor.pde addComponentにてindex溢れ起こるかも
+
+Game.pde processInputに何書く？Processingから入力受け取ってもいいけど，直接updateActorに書いてもいいよな気がする．
+
+ちゃんとactorとかを通ってboxを表示するかテストしたい
+
+ObjectComponent.pde close関数のsuperクラスちゃんと動くか？
