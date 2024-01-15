@@ -2,7 +2,7 @@ Game game;
 
 void setup() {
     fullScreen(P3D);
-    game = new Game();
+    game = new Game(this);
     game.initialize();
 }
 

@@ -2,19 +2,30 @@ import java.util.List;
 import java.util.ArrayList;
 
 class Game {
+    private PApplet mainProcess;
+
     private Renderer renderer = new Renderer(this);
     public Renderer getRenderer() {
         return this.renderer;
     }
+
+    private Server server = new Server(this);
+    private Client client = new Client(this);
 
     private boolean updatingActors;
 
     private List<Actor> actors = new ArrayList<>();
     private List<Actor> pendingActors = new ArrayList<>();
 
+    Game(PApplet that) {
+        this.mainProcess = that;
+    }
+
     public void initialize() {
         frameRate(60);
         this.renderer.initialize();
+        this.server.initialize(this.mainProcess);
+        this.client.initialize(this.mainProcess);
         this.loadData();
     }
 
