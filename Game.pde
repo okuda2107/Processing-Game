@@ -3,8 +3,6 @@ import java.util.ArrayList;
 
 class Game {
     private Renderer renderer = new Renderer(this);
-    private int screenWidth;
-    private int screenHeight;
     public Renderer getRenderer() {
         return this.renderer;
     }
@@ -14,12 +12,8 @@ class Game {
     private List<Actor> actors = new ArrayList<>();
     private List<Actor> pendingActors = new ArrayList<>();
 
-    Game(int width, int height) {
-        this.screenWidth = width;
-        this.screenHeight = height;
-    }
-
     public void initialize() {
+        frameRate(60);
         this.renderer.initialize();
         this.loadData();
     }
@@ -29,14 +23,11 @@ class Game {
     }
 
     public void updateGame() {
-        // translate(width/2, height/2);
-        // rotateY(PI/3);
-        float deltatime = 1 / 60;
+        float deltatime = 1.0 / 60.0;
         updateActors(deltatime);
     }
 
     public void generateOutput() {
-        // box(150, 150, 150);
         this.renderer.draw();
     }
 
@@ -54,7 +45,7 @@ class Game {
 
         List<Actor> deadActors = new ArrayList<>();
         for (var actor : this.actors) {
-            if (actor.state == Actor.State.Dead) {
+            if (actor.state == State.Dead) {
                 deadActors.add(actor);
             }
         }
@@ -64,14 +55,22 @@ class Game {
     }
 
     public void addActor(Actor actor) {
-        this.actors.add(actor);
+        if (updatingActors) this.pendingActors.add(actor);
+        else this.actors.add(actor);
     }
 
     public void removeActor(Actor actor) {
+        this.pendingActors.remove(actor);
         this.actors.remove(actor);
     }
 
     private void loadData() {
-
+        Actor actor = new Actor(this);
+        actor.position = new PVector(0.5, 0.5, 0);
+        actor.rotation = new PVector(0, PI/4, 0);
+        ObjectComponent oc = new ObjectComponent(actor);
+        oc.setShape("Player.obj");
+        Camera camera = new Camera(this);
+        camera.rotation = new PVector(0, 0, 1);
     }
 }

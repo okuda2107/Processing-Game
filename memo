@@ -9,6 +9,9 @@ Actor.pde, Component.pde classの前にabstractを付けやなあかん
 
 https://qiita.com/umi_mori/items/58ade92d9fbb9f9ed696
 https://dekfractal.com/1371.html
+https://future-coders.net/processing%E3%81%A73d%E3%83%A2%E3%83%87%E3%83%AB%E3%82%92%E6%8F%8F%E7%94%BB/
+https://taq.hatenadiary.jp/entry/2022/05/29/203000#3D%E3%83%A2%E3%83%87%E3%83%AB%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%95%E3%81%9B%E3%82%8B
+https://30min-processing.hatenablog.com/entry/2016/05/21/000000
 
 Actor.pde addComponentにてindex溢れ起こるかも
 
@@ -17,3 +20,9 @@ Game.pde processInputに何書く？Processingから入力受け取ってもい�
 ちゃんとactorとかを通ってboxを表示するかテストしたい
 
 ObjectComponent.pde close関数のsuperクラスちゃんと動くか？
+
+ObjectComponent.pdeはスクリーンのサイズがわからんことになってるから描画をするときの計算ができない．
+
+Actorのscale変数使ってない
+
+Game.pde removeActor関数危険かもしれない

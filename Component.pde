@@ -8,18 +8,18 @@ class Component {
     Component(Actor owner, int updateOrder) {
         this.owner = owner;
         this.updateOrder = updateOrder;
-        this.owner.addComponent();
+        this.owner.addComponent(this);
     }
 
     Component(Actor owner) {
         this.owner = owner;
-        this.owner.addComponent();
+        this.owner.addComponent(this);
     }
 
     public void close() {
-        this.owner.removeComponent();
+        this.owner.removeComponent(this);
     }
 
     public void processInput() {}
-    public void update(fload deltatime) {}
+    public void update(float deltatime) {}
 }

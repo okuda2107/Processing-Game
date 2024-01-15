@@ -3,24 +3,24 @@ import java.util.ArrayList;
 
 class Renderer {
     private Game game;
-    private int screenWidth;
-    private int screenHeight;
+    private int screenWidth = displayWidth;
+    private int screenHeight = displayHeight;
 
     private List<ObjectComponent> objects = new ArrayList<>();
 
     Renderer(Game game) {
         this.game = game;
-        this.screenWidth = game.screenWidth;
-        this.screenHeight = game.screenHeight;
     }
 
     public void initialize() {
         background(120);
+        directionalLight(0, 0, 0, 1, 1, -1);
     }
 
     public void draw() {
+        background(120);
         for (var obj : objects) {
-            obj.draw();
+            obj.draw(this.screenWidth, this.screenHeight);
         }
     }
 

@@ -1,9 +1,9 @@
-class Actor {
-    public enum State {
-        Active,
-        Dead
-    };
+enum State {
+    Active,
+    Dead
+}
 
+class Actor {
     private Game game;
     public Game getGame() {
         return this.game;
@@ -11,7 +11,7 @@ class Actor {
 
     public PVector position = new PVector(0, 0, 0);
     public float scale = 0.0;
-    public PVector rotarion = new PVector(0, 0, 0);
+    public PVector rotation = new PVector(0, 0, 0);
     public State state;
 
     List<Component> components = new ArrayList<>();
@@ -57,10 +57,11 @@ class Actor {
     public void addComponent(Component component) {
         int updateOrder = component.getUpdateOrder();
         int i = 0;
-        for (i; i < this.components.size(); i++) {
+        for (; i < this.components.size(); i++) {
             if (updateOrder < this.components.get(i).getUpdateOrder()) break;
         }
-        this.components.add(i+1, component);
+        if (i >= this.components.size()) this.components.add(component);
+        else this.components.add(i, component);
     }
 
     public void removeComponent(Component component) {
