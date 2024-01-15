@@ -8,21 +8,23 @@ class Camera extends Actor {
 
     @Override
     public void update(float deltatime) {
+        PVector temp = new PVector(this.rotation.x, this.rotation.y, 0);
+        PVector forwardVec = new PVector();
+        temp.normalize(forwardVec);
         if (keyPressed == true && key == 'a') {
-            this.position.x -= this.moveSpeed * deltatime;
+            this.position = PVector.add(this.position, PVector.mult(forwardVec, this.moveSpeed * deltatime));
         }
         if (keyPressed == true && key == 's') {
-            this.position.z += this.moveSpeed * deltatime;
+            this.position = PVector.add(this.position, PVector.mult(forwardVec, -1 * this.moveSpeed * deltatime));
         }
         if (keyPressed == true && key == 'w') {
-            this.position.z -= this.moveSpeed * deltatime;
+            this.position = PVector.add(this.position, PVector.mult(forwardVec, this.moveSpeed * deltatime));
         }
         if (keyPressed == true && key == 'd') {
             this.position.x += this.moveSpeed * deltatime;
         }
         PVector diff = new PVector(pmouseX - mouseX, pmouseY - mouseY);
         diff = PVector.mult(diff, angleSpeed);
-        PVector temp = new PVector();
         temp = PVector.add(this.rotation, diff);
         temp.normalize(this.rotation);
         camera(
