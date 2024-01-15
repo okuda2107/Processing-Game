@@ -71,6 +71,7 @@ class Game {
         ObjectComponent oc = new ObjectComponent(actor);
         oc.setShape("Player.obj");
         Camera camera = new Camera(this);
-        camera.rotation = new PVector(0, 0, 1);
+        camera.rotation = new PVector(0, 0, -1);
+        camera.position = new PVector(0, 0, 300);
     }
 }

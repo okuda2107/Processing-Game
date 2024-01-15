@@ -26,3 +26,6 @@ ObjectComponent.pdeはスクリーンのサイズがわからんことになっ�
 Actorのscale変数使ってない
 
 Game.pde removeActor関数危険かもしれない
+
+Camera.pde カメラの操作がおかしい上手くできない．
+先に通信を実装する．
