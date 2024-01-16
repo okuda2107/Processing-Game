@@ -1,12 +1,15 @@
 import processing.net.*;
 
-class Server {
+class Receiver {
     private Game game;
     private String myIP = "123.234.345";
     private int myPort = 20000;
     private Server server;
+    public Server getServer() {
+        return this.server;
+    }
 
-    Server(Game game) {
+    Receiver(Game game) {
         this.game = game;
     }
 

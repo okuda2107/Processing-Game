@@ -9,8 +9,14 @@ class Game {
         return this.renderer;
     }
 
-    private Server server = new Server(this);
-    private Client client = new Client(this);
+    private Receiver receiver = new Receiver(this);
+    public Receiver getReceiver() {
+        return this.receiver;
+    }
+    private Sender sender = new Sender(this);
+    public Sender getSender() {
+        return this.sender;
+    }
 
     private boolean updatingActors;
 
@@ -77,12 +83,13 @@ class Game {
 
     private void loadData() {
         Actor actor = new Actor(this);
-        actor.position = new PVector(0.5, 0.5, 0);
         actor.rotation = new PVector(0, PI/4, 0);
         ObjectComponent oc = new ObjectComponent(actor);
+        ReceiveComponent rc = new ReceiveComponent(actor);
         oc.setShape("Player.obj");
         Camera camera = new Camera(this);
         camera.rotation = new PVector(0, 0, -1);
-        camera.position = new PVector(0, 0, 300);
+        camera.position = new PVector(0, 0, 300); // positionとrotationはハルキのものとずらす必要がある
+        SendComponent sc = new SendComponent(camera);
     }
 }
