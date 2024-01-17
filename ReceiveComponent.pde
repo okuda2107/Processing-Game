@@ -24,9 +24,6 @@ class ReceiveComponent extends Component {
                 Float.parseFloat(pos[1]),
                 Float.parseFloat(pos[2])
             );
-            println(pos[2]);
-            println(rot[2]);
-            println("debug");
             this.owner.rotation = new PVector(
                 Float.parseFloat(rot[0]),
                 Float.parseFloat(rot[1]),
