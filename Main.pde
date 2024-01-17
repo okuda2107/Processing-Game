@@ -5,7 +5,7 @@ String sendIP = "localhost";
 int sendPort = 20001;
 
 // positionとrotationは相手とずらす必要がある
-PVector myRot = new PVector(0, 0, -1);
+PVector myRot = new PVector(0, PI, 0);
 PVector myPos = new PVector(0, 0, 300);
 
 void setup() {

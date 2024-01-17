@@ -1,7 +1,7 @@
 class Camera extends Actor {
     private float forwardSpeed = 0;
     private float strafeSpeed = 0;
-    private float angleSpeed = 0.01;
+    private float angleSpeed = 0;
 
     Camera(Game game) {
         super(game);
@@ -22,7 +22,7 @@ class Camera extends Actor {
             this.strafeSpeed = 100;
         }
 
-        PVector temp = new PVector(this.rotation.x, 0, this.rotation.z);
+        PVector temp = new PVector(-sin(this.rotation.y), 0, cos(this.rotation.y));
         PVector forwardVec = new PVector();
         PVector rightVec = new PVector();
         temp.normalize(forwardVec);
@@ -38,12 +38,13 @@ class Camera extends Actor {
             this.position.x,
             this.position.y,
             this.position.z,
-            this.position.x + this.rotation.x,
-            this.position.y + this.rotation.y,
-            this.position.z + this.rotation.z,
+            this.position.x + forwardVec.x,
+            this.position.y + forwardVec.y,
+            this.position.z + forwardVec.z,
             0, 1, 0
-        );
+        ); // ここちょっと違う，rotationは角度なのでcosとかsinとかを使う必要アリ
         this.forwardSpeed = 0;
         this.strafeSpeed = 0;
+        this.angleSpeed = 0;
     }
 }
