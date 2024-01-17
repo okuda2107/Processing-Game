@@ -15,7 +15,7 @@ class SendComponent extends Component {
     public void update(float deltatime) {
         // 送信処理
         String m = new String();
-        m = Arrays.toString(owner.position.array()) + "," + Arrays.toString(owner.rotation.array());
+        m = Arrays.toString(owner.position.array()) + ";" + Arrays.toString(owner.rotation.array());
         this.owner.getGame().getSender().getClient().write(m);
     }
 }
