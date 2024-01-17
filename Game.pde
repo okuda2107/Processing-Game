@@ -30,8 +30,8 @@ class Game {
     public void initialize() {
         frameRate(60);
         this.renderer.initialize();
-        this.server.initialize(this.mainProcess);
-        this.client.initialize(this.mainProcess);
+        this.sender.initialize(this.mainProcess);
+        this.receiver.initialize(this.mainProcess);
         this.loadData();
     }
 
@@ -83,13 +83,12 @@ class Game {
 
     private void loadData() {
         Actor actor = new Actor(this);
-        actor.rotation = new PVector(0, PI/4, 0);
         ObjectComponent oc = new ObjectComponent(actor);
         ReceiveComponent rc = new ReceiveComponent(actor);
         oc.setShape("Player.obj");
         Camera camera = new Camera(this);
-        camera.rotation = new PVector(0, 0, -1);
-        camera.position = new PVector(0, 0, 300); // positionとrotationはハルキのものとずらす必要がある
+        camera.rotation = new PVector(0, 0, 1);
+        camera.position = new PVector(0, 0, -300); // positionとrotationはハルキのものとずらす必要がある
         SendComponent sc = new SendComponent(camera);
     }
 }

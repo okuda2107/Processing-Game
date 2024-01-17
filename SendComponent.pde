@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import processing.net.*;
 
 class SendComponent extends Component {
@@ -6,10 +7,15 @@ class SendComponent extends Component {
     }
 
     @Override
-    void update(float deltatime) {
+    public void close() {
+        super.close();
+    }
+
+    @Override
+    public void update(float deltatime) {
         // 送信処理
         String m = new String();
-        m = String.join(",", owner.position.array()) + "," + String.join(",", owner.position.array());
+        m = Arrays.toString(owner.position.array()) + "," + Arrays.toString(owner.rotation.array());
         this.owner.getGame().getSender().getClient().write(m);
     }
 }

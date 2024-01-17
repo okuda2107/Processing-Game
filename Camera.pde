@@ -8,7 +8,7 @@ class Camera extends Actor {
     }
 
     @Override
-    public void update(float deltatime) {
+    public void updateActor(float deltatime) {
         if (keyPressed == true && key == 'a') {
             this.strafeSpeed = -100;
         }

@@ -12,7 +12,7 @@ class Actor {
     public PVector position = new PVector(0, 0, 0);
     public float scale = 0.0;
     public PVector rotation = new PVector(0, 0, 0);
-    public State state;
+    public State state = State.Active;
 
     List<Component> components = new ArrayList<>();
 
@@ -52,7 +52,7 @@ class Actor {
         }
     }
 
-    private void updateActor(float deltatime) {}
+    public void updateActor(float deltatime) {}
 
     public void addComponent(Component component) {
         int updateOrder = component.getUpdateOrder();
