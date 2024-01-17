@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import processing.net.*;
 
 class Game {
     private PApplet mainProcess;
@@ -30,8 +31,8 @@ class Game {
     public void initialize() {
         frameRate(60);
         this.renderer.initialize();
-        this.sender.initialize(this.mainProcess);
         this.receiver.initialize(this.mainProcess);
+        this.sender.initialize(this.mainProcess);
         this.loadData();
     }
 
@@ -87,8 +88,8 @@ class Game {
         ReceiveComponent rc = new ReceiveComponent(actor);
         oc.setShape("Player.obj");
         Camera camera = new Camera(this);
-        camera.rotation = new PVector(0, 0, 1);
-        camera.position = new PVector(0, 0, -300); // positionとrotationはハルキのものとずらす必要がある
+        camera.rotation = myRot;
+        camera.position = myPos;
         SendComponent sc = new SendComponent(camera);
     }
 }
