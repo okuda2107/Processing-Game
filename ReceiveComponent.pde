@@ -17,17 +17,20 @@ class ReceiveComponent extends Component {
         if (c != null) {
             String s = c.readString();
             String[] arr = s.split(";");
-            String[] pos = arr[0].replace("[", "").replace("]", "").split(" ");
-            String[] rot = arr[1].replace("[", "").replace("]", "").split(" ");
+            String[] pos = arr[0].replace("[", "").replace("]", "").split(",");
+            String[] rot = arr[1].replace("[", "").replace("]", "").split(",");
             this.owner.position = new PVector(
                 Float.parseFloat(pos[0]),
                 Float.parseFloat(pos[1]),
                 Float.parseFloat(pos[2])
             );
+            println(pos[2]);
+            println(rot[2]);
+            println("debug");
             this.owner.rotation = new PVector(
-                Float.parseFloat(rot[3]),
-                Float.parseFloat(rot[4]),
-                Float.parseFloat(rot[5])
+                Float.parseFloat(rot[0]),
+                Float.parseFloat(rot[1]),
+                Float.parseFloat(rot[2])
             );
         }
     }
