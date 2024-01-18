@@ -1,6 +1,7 @@
 Game game;
 
 int receivePort = 20000;
+//String sendIP = "10.128.203.11";
 String sendIP = "localhost";
 int sendPort = 20001;
 
